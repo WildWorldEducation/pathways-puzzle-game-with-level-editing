@@ -571,16 +571,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 412718052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de22d89954c81bd42b876ba4e9eac4af, type: 3}
+  m_Script: {fileID: 11500000, guid: 49aa6b772b6c14e4ab0451862d1ae3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   squareTileMap: {fileID: 64365675}
-  currentTile: {fileID: 11400000, guid: 852231f8a1a4d3b4baddd121b57c9da2, type: 2}
-  horToggleTile: {fileID: 11400000, guid: 171638a484ecf104cad0d7f3d416b54c, type: 2}
-  verToggleTile: {fileID: 11400000, guid: 468c7665d0441eb498a7162d39361a21, type: 2}
-  startPointTile: {fileID: 11400000, guid: 852231f8a1a4d3b4baddd121b57c9da2, type: 2}
-  endPointTile: {fileID: 11400000, guid: 082b18b1d9968ac42bc03af8a7b69080, type: 2}
-  blockerTile: {fileID: 11400000, guid: 7bc7a74ff6cb78b439cfa27a387d2e8f, type: 2}
+  currentTile: {fileID: 0}
+  horToggleTile: {fileID: 11400000, guid: 16c0eca6c94714164baf4b5ee9224a10, type: 2}
+  verToggleTile: {fileID: 11400000, guid: 6f606b559c699404cb7feb9e1b434171, type: 2}
+  startPointTile: {fileID: 11400000, guid: c1d5bfb9667404369a676f4a24f1e2ec, type: 2}
+  endPointTile: {fileID: 11400000, guid: 02ea10125b936428dae08b8d5bac8488, type: 2}
+  blockerTile: {fileID: 11400000, guid: b1f5ffb735f75420fb36737295bc4785, type: 2}
   cam: {fileID: 499597541}
 --- !u!1 &499597539
 GameObject:
@@ -676,7 +676,6 @@ GameObject:
   m_Component:
   - component: {fileID: 523586303}
   - component: {fileID: 523586302}
-  - component: {fileID: 523586304}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -693,15 +692,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 523586301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705cc4a1217e5f240be5c2849666310d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a3a9a26745c54414937f1fcc15dd73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: f9bbf997cfa45084f92e1bcb3523af63, type: 2}
-  - {fileID: 11400000, guid: 84bd81fdc59c4294dac56c182e701b3a, type: 2}
-  - {fileID: 11400000, guid: 71f2fb9dc304ebd439b414f011bf0c89, type: 2}
-  - {fileID: 11400000, guid: 8e356aa57b227724298eda9d9fa35cff, type: 2}
-  - {fileID: 11400000, guid: bbb95b0b5c58bd844bf247b3d3462faf, type: 2}
+  - {fileID: 11400000, guid: 08c78ff3a06c7487586599c0123eeaf3, type: 2}
+  - {fileID: 11400000, guid: d24b2a414618744fc81d839d2463f408, type: 2}
+  - {fileID: 11400000, guid: 3ad78a14302864851a0d0f2856ae9244, type: 2}
+  - {fileID: 11400000, guid: ee1036742211c4f29bddc4f07bd57210, type: 2}
+  - {fileID: 11400000, guid: a0f26ae0140304dd596d927e3b2dbe64, type: 2}
   squareTileMap: {fileID: 64365675}
   _mapNameInput: {fileID: 1081089997}
 --- !u!4 &523586303
@@ -719,19 +718,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &523586304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523586301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02e22c154d72e249805b79a2d057c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 499597541}
 --- !u!1 &569908759
 GameObject:
   m_ObjectHideFlags: 0
