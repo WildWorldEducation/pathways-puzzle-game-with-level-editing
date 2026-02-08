@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1324aeef7fb209841aeedbe4fd186119, type: 3}
+  m_Script: {fileID: 11500000, guid: c4c709405cd614161aebf9020fcd713f, type: 3}
   m_Name: EndPointCustomTile
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 082b18b1d9968ac42bc03af8a7b69080, type: 2}
-  id: EndPoint
+  tile: {fileID: 11400000, guid: 02ea10125b936428dae08b8d5bac8488, type: 2}
+  id: 

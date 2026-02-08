@@ -9,12 +9,12 @@ using System.Web;
 using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
-{  
+{
     [DllImport("__Internal")]
     private static extern void AddMap(string cohortId, string mapJSON);
 
     [DllImport("__Internal")]
-    private static extern void UpdateMap(string mapId, string mapJSON);  
+    private static extern void UpdateMap(string mapId, string mapJSON);
 
     public static MapManager instance;
     public List<CustomTile> tiles = new List<CustomTile>();
@@ -49,10 +49,10 @@ public class MapManager : MonoBehaviour
 
             _cohortId = HttpUtility.ParseQueryString(uri.Query).Get("cohort");
 
-            if (urlString.ToLower().Contains('&')) 
-            {                        
+            if (urlString.ToLower().Contains('&'))
+            {
                 _mapId = HttpUtility.ParseQueryString(uri.Query).Get("id");
-                _mapJSON = HttpUtility.ParseQueryString(uri.Query).Get("map");      
+                _mapJSON = HttpUtility.ParseQueryString(uri.Query).Get("map");
                 LoadMap(_mapJSON);
             }
         }
@@ -60,10 +60,17 @@ public class MapManager : MonoBehaviour
 
     public void SaveMap()
     {
+        if (string.IsNullOrEmpty(_mapName))
+        {
+            Debug.LogError("Map name is empty. Cannot save map.");
+            return;
+        }
+
+
         Debug.Log("map saved");
-        
+
         // Get bounds of both tilemaps
-        BoundsInt bounds = squareTileMap.cellBounds;        
+        BoundsInt bounds = squareTileMap.cellBounds;
 
         // Get data for the tilemap.
         MapData squareTileMapData = new MapData();
@@ -82,16 +89,18 @@ public class MapManager : MonoBehaviour
                     squareTileMapData.positions.Add(new Vector3Int(x, y, 0));
                 }
             }
-        }       
+        }
 
         string json = JsonUtility.ToJson(squareTileMapData, false);
-                
-        if (Application.platform == RuntimePlatform.WindowsEditor)
+        Debug.Log(json);
+
+        if (Application.isEditor)
         {
+            Debug.Log(Application.dataPath + "/Maps/" + _mapName + ".json");
             File.WriteAllText(Application.dataPath + "/Maps/" + _mapName + ".json", json);
         }
         else if (Application.platform == RuntimePlatform.WebGLPlayer)
-        {        
+        {
             if (!_isEditingMap)
             {
                 AddMap(_cohortId, json);
@@ -99,7 +108,7 @@ public class MapManager : MonoBehaviour
             else
             {
                 UpdateMap(_mapId, json);
-            }            
+            }
         }
     }
 
@@ -116,8 +125,8 @@ public class MapManager : MonoBehaviour
         else if (Application.platform == RuntimePlatform.WindowsEditor)
         {
             json = File.ReadAllText(Application.dataPath + "/maps/" + "test10" + ".json");
-        }          
-      
+        }
+
         MapData data = JsonUtility.FromJson<MapData>(json);
 
         squareTileMap.ClearAllTiles();
@@ -157,7 +166,7 @@ public class MapManager : MonoBehaviour
 
     public void AssignMapName(string mapName)
     {
-        _mapName = mapName;      
+        _mapName = mapName;
     }
 }
 
