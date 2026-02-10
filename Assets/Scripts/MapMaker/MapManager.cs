@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.Web;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapManager : MonoBehaviour
 {
@@ -16,9 +17,15 @@ public class MapManager : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void UpdateMap(string mapId, string mapJSON);
 
+    // To download saved map from browser
+#if UNITY_WEBGL && !UNITY_EDITOR
+[DllImport("__Internal")]
+private static extern void DownloadJSON(string filename, string json);
+#endif
+
     public static MapManager instance;
     public List<CustomTile> tiles = new List<CustomTile>();
-    private string _mapName;
+    private string _mapName = "map";
     private string _mapJSON = "";
 
     public Tilemap squareTileMap;
@@ -26,8 +33,8 @@ public class MapManager : MonoBehaviour
     private string _mapId;
     private bool _isEditingMap = false;
 
-    [SerializeField]
-    private InputField _mapNameInput;
+    // [SerializeField]
+    // private TMP_InputField _mapNameInput;
 
     private void Awake()
     {
@@ -42,8 +49,15 @@ public class MapManager : MonoBehaviour
     }
     void Start()
     {
+        // Automatically focuses the map name input field when the scene starts, allowing the user to immediately start typing the map name.
+        //StartCoroutine(FocusInputNextFrame());
+
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
+            // Necessary to allow keyboard input in WebGL builds. Without this, the browser will capture all keyboard input and not send it to the Unity application.
+            WebGLInput.captureAllKeyboardInput = false;
+
+
             string urlString = Application.absoluteURL;
             Uri uri = new Uri(urlString);
 
@@ -58,6 +72,13 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    // IEnumerator FocusInputNextFrame()
+    // {
+    //     yield return null; // wait one frame
+    //     _mapNameInput.ActivateInputField();
+    //     _mapNameInput.Select();
+    // }
+
     public void SaveMap()
     {
         if (string.IsNullOrEmpty(_mapName))
@@ -66,8 +87,6 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-
-        Debug.Log("map saved");
 
         // Get bounds of both tilemaps
         BoundsInt bounds = squareTileMap.cellBounds;
@@ -91,7 +110,15 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        string json = JsonUtility.ToJson(squareTileMapData, false);
+        //  string json = JsonUtility.ToJson(squareTileMapData, false);
+
+        string json = JsonUtility.ToJson(squareTileMapData, true);
+        // If running in browser
+#if UNITY_WEBGL && !UNITY_EDITOR
+DownloadJSON(_mapName + ".json", json);
+#elif UNITY_EDITOR
+File.WriteAllText(Application.dataPath + "/Maps/" + _mapName + ".json", json);
+#endif
         Debug.Log(json);
 
         if (Application.isEditor)
@@ -99,17 +126,17 @@ public class MapManager : MonoBehaviour
             Debug.Log(Application.dataPath + "/Maps/" + _mapName + ".json");
             File.WriteAllText(Application.dataPath + "/Maps/" + _mapName + ".json", json);
         }
-        else if (Application.platform == RuntimePlatform.WebGLPlayer)
-        {
-            if (!_isEditingMap)
-            {
-                AddMap(_cohortId, json);
-            }
-            else
-            {
-                UpdateMap(_mapId, json);
-            }
-        }
+        // else if (Application.platform == RuntimePlatform.WebGLPlayer)
+        // {
+        //     if (!_isEditingMap)
+        //     {
+        //         AddMap(_cohortId, json);
+        //     }
+        //     else
+        //     {
+        //         UpdateMap(_mapId, json);
+        //     }
+        // }
     }
 
     public void LoadMap(string mapJSON)
@@ -160,7 +187,7 @@ public class MapManager : MonoBehaviour
             squareTileMap.SetTile(data.positions[i], tiles[tileListNum].tile);
 
             _mapName = data.name;
-            _mapNameInput.text = _mapName;
+            // _mapNameInput.text = _mapName;
         }
     }
 
