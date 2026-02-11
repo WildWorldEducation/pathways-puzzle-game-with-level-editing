@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EndPointCustomTile
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: 02ea10125b936428dae08b8d5bac8488, type: 2}
-  id: 
+  id: 3

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 880648080937267969}
   - component: {fileID: 880648080937267975}
   - component: {fileID: 2958267815106057910}
-  - component: {fileID: 4356454257661821175}
   m_Layer: 0
   m_Name: StartPoint
   m_TagString: StartPoint
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 744ab654b45264e3c9f66b4c12f8d827, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,30 +111,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 880648080937267970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c1f7184eef77a46ac201de1e8f8362, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b077ba0cc5147dba82e94f44f67fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toggles: []
-  thisCollider: {fileID: 880648080937267975}
---- !u!114 &4356454257661821175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880648080937267970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 1
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
+  thisCollider: {fileID: 0}

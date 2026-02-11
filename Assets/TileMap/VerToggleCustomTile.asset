@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VerToggleCustomTile
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: 6f606b559c699404cb7feb9e1b434171, type: 2}
-  id: 
+  id: 1

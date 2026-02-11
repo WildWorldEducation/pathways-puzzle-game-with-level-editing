@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BlockerCustomTile
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: b1f5ffb735f75420fb36737295bc4785, type: 2}
-  id: 
+  id: 4

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: StartPointCustomTile
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: c1d5bfb9667404369a676f4a24f1e2ec, type: 2}
-  id: 
+  id: 2

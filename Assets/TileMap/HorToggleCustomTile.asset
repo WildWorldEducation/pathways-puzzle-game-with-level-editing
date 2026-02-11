@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HorToggleCustomTile
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: 16c0eca6c94714164baf4b5ee9224a10, type: 2}
-  id: 
+  id: 0
